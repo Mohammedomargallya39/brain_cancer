@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import '../../../features/register/presentaion/widgets/register_widget.dart';
 import '../../di/injection.dart';
 import '../../models/login_model.dart';
 import '../../models/select_government_model.dart';
 import '../../network/local/cache_helper.dart';
+import '../../network/remote/api_endpoints.dart';
 import '../../network/repository.dart';
 import '../constants.dart';
 import '../translation.dart';
@@ -245,27 +247,29 @@ class AppCubit extends Cubit<AppState> {
   RegisterModel? registerModel;
 
   void register(
-  // {
-  //   required String email,
-  //   required String password,
-  //   required String confirmPassword,
-  //   required int age,
-  //   //required bool isPatient,
-  //   required String phone,
-  //   required String userName,
-  // }
+  {
+    required String email,
+    required String password,
+    required String confirmPassword,
+    required int age,
+    required bool isPatient,
+    required String phone,
+    required String userName,
+    required String status,
+  }
   ) async
   {
     emit(RegisterLoading());
 
     final register = await _repository.register(
-      // email: email,
-      // password: password,
-      // age: age,
-      // phone: phone,
-      // confirmPassword: confirmPassword,
-      // isPatient: true,
-      // userName: userName,
+      email: email,
+      password: password,
+      age: age,
+      phone: phone,
+      confirmPassword: confirmPassword,
+      isPatient: isPatient,
+      userName: userName,
+      status: status
     );
 
     register.fold(
@@ -289,6 +293,25 @@ class AppCubit extends Cubit<AppState> {
     );
 
   }
+
+  SingingCharacter? character = SingingCharacter.patient;
+  String? statusLink;
+  bool? patient;
+  void changeStatus(value)
+  {
+    character = value;
+    if(character == SingingCharacter.patient)
+    {
+      statusLink = patientUrl;
+      patient = true;
+    } else
+    {
+      statusLink = doctorUrl;
+      patient = false;
+    }
+    emit(ChangeStatus());
+  }
+
 
 
 }

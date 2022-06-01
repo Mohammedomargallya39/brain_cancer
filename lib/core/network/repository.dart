@@ -15,15 +15,17 @@ abstract class Repository {
   });
 
   Future<Either<dynamic, RegisterModel>> register(
-  //     {
-  //   required String email,
-  //   required String password,
-  //   required String confirmPassword,
-  //   required String userName,
-  //   required String phone,
-  //   required int age,
-  //   required bool isPatient
-  // }
+      {
+    required String email,
+    required String password,
+    required String confirmPassword,
+    required String userName,
+    required String phone,
+    required int age,
+    required bool isPatient,
+    required String status
+
+      }
   );
 }
 
@@ -69,30 +71,31 @@ class RepoImplementation extends Repository {
 
   @override
   Future<Either<dynamic, RegisterModel>> register(
-      // {
-      //   required String email,
-      //   required String password,
-      //   required String confirmPassword,
-      //   required String userName,
-      //   required String phone,
-      //   required int age,
-      //   required bool isPatient
-      //
-      // }
+      {
+        required String email,
+        required String password,
+        required String confirmPassword,
+        required String userName,
+        required String phone,
+        required int age,
+        required bool isPatient,
+        required String status
+
+      }
       ) async
   { return _basicErrorHandling<RegisterModel>(
       onSuccess: () async
       {
         final Response f = await dioHelper.post(
-            url: registerUrl,
+            url: '$registerUrl$status',
             data: {
-              'username': "mmmmm",
-              'age': 29,
-              'phone': '0109258987',
-              'email': "mmmm@gmail.com",
-              'password': "password",
-              'password2': "password",
-              'is_patient': false
+              'username': userName,
+              'age': age,
+              'phone': phone,
+              'email': email,
+              'password': password,
+              'password2': confirmPassword,
+              'is_patient': isPatient
 
             }
         );

@@ -1,11 +1,16 @@
-const String baseUrl = 'http://d1d9-156-210-34-115.ngrok.io/';
+const String baseUrl = 'http://f1a4-156-210-34-115.ngrok.io/api/';
 
 String? token;
 
+const String loginUrl = 'login/';
 
-const String loginUrl = 'api/login/';
+const String registerUrl = 'signup/';
 
-const String registerUrl = 'signup/patient/';
+const String patientUrl = 'patient/';
+
+const String doctorUrl = 'doctor/';
+
+
 
 
 

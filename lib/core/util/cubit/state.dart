@@ -63,5 +63,7 @@ class RegisterError extends AppState {
   });
 }
 
+class ChangeStatus extends AppState {}
+
 
 

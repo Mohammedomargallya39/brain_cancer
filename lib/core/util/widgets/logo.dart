@@ -17,9 +17,9 @@ class AppLogo extends StatelessWidget {
           'assets/images/BrainCancerLogo.png',
           width: pxToDp(350.0),
           height: pxToDp(350.0),
-          color: AppCubit
-              .get(context)
-              .isDark ? HexColor(regularGrey) : HexColor(mainColor),
+          // color: AppCubit
+          //     .get(context)
+          //     .isDark ? HexColor(regularGrey) : HexColor(mainColor),
         );
       },
     );
