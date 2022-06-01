@@ -14,7 +14,7 @@ bool isEnglish = true;
 const String serverFailureMessage = 'Server Failure';
 const String cacheFailureMessage = 'Cache Failure';
 
-const String mainColor = 'fcb955';
+const String mainColor = '56c7d4';
 const String secondary = '303C47';
 const String secondaryVariant = '6A6D78';
 
@@ -30,7 +30,7 @@ const String greenColor = '07B055';
 const String blueColor = '0E72ED';
 
 const Color secondaryVariantRGB = Color.fromRGBO(33, 36, 36, 0.7);
-const Color mainColorRGB = Color.fromRGBO(252, 185, 85, 1);
+const Color mainColorRGB = Color.fromRGBO(83, 200, 212, 1.0);
 
 
 // dark colors
