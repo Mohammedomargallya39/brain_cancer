@@ -52,7 +52,7 @@ class SettingsItem extends StatelessWidget {
                       Icon(
                         icon,
                         size: 16.0,
-                        color: HexColor(secondaryVariant),
+                        color: AppCubit.get(context).isDark ? whiteColor : blackColor,
                       ),
                     if (showIcon) space10Horizontal(context),
                     if (showAssetsIcon)
@@ -65,7 +65,9 @@ class SettingsItem extends StatelessWidget {
                     Expanded(
                       child: Text(
                         title,
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: AppCubit.get(context).isDark ? whiteColor : blackColor,
+                        ),
                       ),
                     ),
                     if (showPhone)
@@ -87,7 +89,7 @@ class SettingsItem extends StatelessWidget {
                             Icon(
                               Icons.keyboard_arrow_right,
                               size: 16.0,
-                              color:HexColor(secondaryVariant),
+                              color: AppCubit.get(context).isDark ? whiteColor : blackColor,
                             ),
                       ),
                   ],

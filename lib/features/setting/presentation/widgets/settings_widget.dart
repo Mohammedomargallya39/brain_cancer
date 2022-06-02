@@ -14,6 +14,7 @@ import '../../../../core/util/cubit/cubit.dart';
 import '../../../../core/util/cubit/state.dart';
 import '../../../../core/util/widgets/logo.dart';
 import '../../../login/presentaion/pages/login_page.dart';
+import '../pages/about_us_page.dart';
 import 'choose_between_two_options.dart';
 
 class SettingsWidget extends StatelessWidget {
@@ -56,7 +57,9 @@ class SettingsWidget extends StatelessWidget {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    fontWeight: FontWeight.w700
+                                    fontWeight: FontWeight.w700,
+                                    color: AppCubit.get(context).isDark ? whiteColor : blackColor,
+
                                 ),
                               ),
                               space3Vertical(context),
@@ -100,24 +103,36 @@ class SettingsWidget extends StatelessWidget {
                           navigateTo(context, const ProfilePage());
                         },
                       ),
+                      space10Vertical(context),
                       SettingsItem(
-                          title: appTranslation(context).mode,
-                          icon: Icons.brightness_2_outlined,
-                          function: ()
-                          {
-                            myBottomSheet(
-                              context: context,
-                              widget: ChooseYourOption(
-                                titleFirstOption: Icons.brightness_5_outlined,
-                                fullTitleFirstOption: appTranslation(context).lightMode,
-                                secondTitleOption: Icons.brightness_4_outlined,
-                                fullSecondTitleOption: appTranslation(context).darkMode,
-                                onTapFirstOption: () {},
-                                onTapSecondOption: () {},
-                              ),
-                            );
-                          },
+                        title: appTranslation(context).mode,
+                        icon: Icons.brightness_2_outlined,
+                        function: ()
+                        {
+                          myBottomSheet(
+                            context: context,
+                            widget: ChooseYourOption(
+                              titleFirstOption: Icons.brightness_5_outlined,
+                              fullTitleFirstOption: appTranslation(context).lightMode,
+                              secondTitleOption: Icons.brightness_4_outlined,
+                              fullSecondTitleOption: appTranslation(context).darkMode,
+                              onTapFirstOption: ()
+                              {
+                                AppCubit.get(context).changeMode(value: false);
+                                Navigator.pop(context);
+                              },
+                              onTapSecondOption: ()
+                              {
+                                AppCubit.get(context).changeMode(value: true);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          );
+                        },
+
+                        // (){}
                       ),
+                      space10Vertical(context),
                       SettingsItem(
                         title: appTranslation(context).language,
                         icon: Icons.language_outlined,
@@ -152,106 +167,18 @@ class SettingsWidget extends StatelessWidget {
                                             }
                                           },
                               ),
-                              // Column(
-                              //     crossAxisAlignment: CrossAxisAlignment.start,
-                              //     mainAxisSize: MainAxisSize.min,
-                              //     children:
-                              //     [
-                              //       Padding(
-                              //         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                              //         child: InkWell(
-                              //           onTap: ()
-                              //           {
-                              //             if (AppCubit.get(context).isRtl == false) {
-                              //               Navigator.pop(context);
-                              //             }
-                              //             if (AppCubit.get(context).isRtl == true) {
-                              //               AppCubit.get(context).changeLanguage(value: false);
-                              //               Navigator.pop(context);
-                              //             }
-                              //
-                              //           },
-                              //           child: Row(
-                              //             children: [
-                              //               Text(
-                              //                 '(En)',
-                              //                 style: Theme.of(context).textTheme.bodyText2,
-                              //               ),
-                              //               space10Horizontal(context),
-                              //               Expanded(
-                              //                 child: Text(
-                              //                   appTranslation(context).english,
-                              //                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                              //                     fontWeight: FontWeight.w400,
-                              //                   ),
-                              //                 ),
-                              //               ),
-                              //             ],
-                              //           ),
-                              //         ),
-                              //       ),
-                              //       const MyDivider(),
-                              //       Padding(
-                              //         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                              //         child: InkWell(
-                              //           onTap: ()
-                              //           {
-                              //             if (AppCubit.get(context).isRtl == true) {
-                              //               Navigator.pop(context);
-                              //             }
-                              //             if (AppCubit.get(context).isRtl == false) {
-                              //               AppCubit.get(context).changeLanguage(value: true);
-                              //               Navigator.pop(context);
-                              //             }
-                              //           },
-                              //           child: Row(
-                              //             children: [
-                              //               Text(
-                              //                 '(Ar)',
-                              //                 style: Theme.of(context).textTheme.bodyText2,
-                              //               ),
-                              //               space10Horizontal(context),
-                              //               Expanded(
-                              //                 child: Text(
-                              //                   appTranslation(context).arabic,
-                              //                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                              //                     fontWeight: FontWeight.w400,
-                              //                   ),
-                              //                 ),
-                              //               ),
-                              //             ],
-                              //           ),
-                              //         ),
-                              //       ),
-                              //     ],
-                              // ),
                           );
                         },
                       ),
+                      space10Vertical(context),
                       SettingsItem(
                         title: appTranslation(context).aboutUs,
                         icon: Icons.info_outlined,
-                        function: ()
-                        {
-
-                        },
+                        function: () {
+                          navigateTo(context, const AboutUsPage());
+                        }
                       ),
-                      SettingsItem(
-                        title: appTranslation(context).connectUs,
-                        icon: Icons.headset_mic_outlined,
-                        function: ()
-                        {
-
-                        },
-                      ),
-                      SettingsItem(
-                        title: appTranslation(context).help,
-                        icon: Icons.help_outline_outlined,
-                        function: ()
-                        {
-
-                        },
-                      ),
+                      space10Vertical(context),
                       SettingsItem(
                         title: appTranslation(context).logOut,
                         icon: Icons.logout_outlined,
@@ -275,8 +202,5 @@ class SettingsWidget extends StatelessWidget {
         );
       },
     );
-    //   Center(
-    //   child: Text(appTranslation(context).settings,),
-    // );
   }
 }

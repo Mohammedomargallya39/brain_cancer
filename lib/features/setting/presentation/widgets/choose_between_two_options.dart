@@ -46,13 +46,18 @@ class ChooseYourOption extends StatelessWidget {
                     //   style: Theme.of(context).textTheme.bodyText2,
                     // ),
 
-                     Icon(titleFirstOption),
+                     Icon(
+                         titleFirstOption,
+                       color: AppCubit.get(context).isDark ? whiteColor : blackColor,
+                     ),
                     space10Horizontal(context),
                     Expanded(
                       child: Text(
                         fullTitleFirstOption,
                         style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           fontWeight: FontWeight.w400,
+                          color: AppCubit.get(context).isDark ? whiteColor : blackColor,
+
                         ),
                       ),
                     ),
@@ -67,13 +72,17 @@ class ChooseYourOption extends StatelessWidget {
                 onTap: onTapSecondOption,
                 child: Row(
                   children: [
-                    Icon(secondTitleOption),
+                    Icon(
+                      secondTitleOption,
+                      color: AppCubit.get(context).isDark ? whiteColor : blackColor,
+                    ),
                     space10Horizontal(context),
                     Expanded(
                       child: Text(
                         fullSecondTitleOption,
                         style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           fontWeight: FontWeight.w400,
+                          color: AppCubit.get(context).isDark ? whiteColor : blackColor,
                         ),
                       ),
                     ),
