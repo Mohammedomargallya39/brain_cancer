@@ -1,14 +1,26 @@
-const String baseUrl = 'http://f1a4-156-210-34-115.ngrok.io/api/';
+const String baseUrl = 'http://3a98-156-210-34-115.ngrok.io/';
 
 String? token;
 
-const String loginUrl = 'login/';
+String? userName;
 
-const String registerUrl = 'signup/';
+bool? isPatient;
+
+const String loginUrl = 'api/login/';
+
+const String registerUrl = 'api/signup/';
 
 const String patientUrl = 'patient/';
 
 const String doctorUrl = 'doctor/';
+
+const String uploadImageUrl = 'image/upload_image';
+
+const String profilePatientUrl = 'api/patient/dashboard/';
+
+const String profileDoctorUrl = 'api/doctor/dashboard/';
+
+
 
 
 

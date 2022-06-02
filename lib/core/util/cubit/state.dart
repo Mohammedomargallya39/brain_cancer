@@ -31,9 +31,14 @@ class UserLoginLoading extends AppState {}
 
 class UserLoginSuccess extends AppState {
   final String token;
+  final String userName;
+  final bool isPatient;
+
 
   UserLoginSuccess({
     required this.token,
+    required this.userName,
+    required this.isPatient,
   });
 }
 
@@ -64,6 +69,29 @@ class RegisterError extends AppState {
 }
 
 class ChangeStatus extends AppState {}
+
+class SelectImageState extends AppState {}
+
+class UploadImageLoading extends AppState {}
+
+class UploadImageSuccess extends AppState {
+  // final String result;
+  //
+  // UploadImageSuccess({
+  //   required this.result,
+  // });
+}
+
+class UploadImageError extends AppState {}
+
+class ProfileLoading extends AppState {}
+
+class ProfileError extends AppState {}
+
+class ProfileSuccess extends AppState {}
+
+
+
 
 
 

@@ -45,11 +45,20 @@ void main() async {
       .loadString('assets/translations/${isRtl ? 'ar' : 'en'}.json');
 
   token = await sl<CacheHelper>().get('token');
+  userName = await sl<CacheHelper>().get('userName');
+  isPatient = await sl<CacheHelper>().get('isPatient');
+
+
 
   debugPrintFullText('My Current Token => $token');
+  debugPrintFullText('My User Name => $userName');
+  debugPrintFullText('Is Patient => $isPatient');
+
 
 
   runApp(MyApp(
+    userName: userName ?? '',
+    isPatient: isPatient ?? true,
     token: token,
     isRtl: isRtl,
     isDark: isDark,
@@ -62,6 +71,9 @@ class MyApp extends StatelessWidget {
   final bool isRtl;
   final bool isDark;
   final String translation;
+  final String userName;
+  final bool isPatient;
+
 
   MyApp({
     Key? key,
@@ -69,6 +81,9 @@ class MyApp extends StatelessWidget {
     required this.isRtl,
     required this.isDark,
     required this.translation,
+    required this.userName,
+    required this.isPatient,
+
   }) : super(key: key);
 
   @override
@@ -82,6 +97,8 @@ class MyApp extends StatelessWidget {
               rtl: isRtl,
             )..setTranslation(
               translation: translation,
+            )..profile(
+                profileUrl: isPatient? profilePatientUrl: profileDoctorUrl,
             ),
         ),
       ],

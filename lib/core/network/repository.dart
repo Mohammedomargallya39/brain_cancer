@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:brain_cancer_detection_v1/core/models/profile_model.dart';
 import 'package:brain_cancer_detection_v1/core/network/remote/api_endpoints.dart';
 import 'package:brain_cancer_detection_v1/core/network/remote/dio.dart';
 import 'package:dartz/dartz.dart';
@@ -6,9 +8,11 @@ import 'package:flutter/material.dart';
 import '../error/exceptions.dart';
 import '../models/login_model.dart';
 import '../models/register_model.dart';
+import '../models/result_model.dart';
 import 'local/cache_helper.dart';
 
 abstract class Repository {
+
   Future<Either<String, LoginModel>> login({
     required String email,
     required String password,
@@ -25,8 +29,18 @@ abstract class Repository {
     required bool isPatient,
     required String status
 
-      }
-  );
+      });
+
+  Future<Either<String, void>> uploadImage({
+    required File image,
+    required String userName,
+  });
+
+  Future<Either<String, ProfileModel>> profile({
+  required String profileUrl,
+});
+
+
 }
 
 class RepoImplementation extends Repository {
@@ -112,6 +126,69 @@ class RepoImplementation extends Repository {
   // TODO: implement login
   throw UnimplementedError();
   }
+
+  @override
+  Future<Either<String, void>> uploadImage(
+      {
+        required File image,
+        required String userName,
+      }
+      ) async
+  { return _basicErrorHandling<void>(
+      onSuccess: () async
+      {
+        final Response f = await dioHelper.post(
+            url: uploadImageUrl,
+            query: {
+              'username': userName,
+            },
+            data: FormData.fromMap(
+                {
+                    'image': await MultipartFile.fromFile(
+                      image.path,
+                      filename: Uri.file(image.path).pathSegments.last,
+                    ),
+                }
+            ),
+        );
+        },
+      onServerError: (exception) async
+      {
+        debugPrint(exception.message);
+        return exception.message;
+      }
+  );
+
+  // TODO: implement login
+  throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<String, ProfileModel>> profile(
+  {
+  required String profileUrl
+}) async
+  { return _basicErrorHandling<ProfileModel>(
+      onSuccess: () async
+      {
+        final Response f = await dioHelper.get(
+          url: profileUrl,
+          token: token
+        );
+
+        return ProfileModel.fromJson(f.data);
+      },
+      onServerError: (exception) async
+      {
+        debugPrint(exception.message);
+        return exception.message;
+      }
+  );
+
+  // TODO: implement login
+  throw UnimplementedError();
+  }
+
 }
 
 

@@ -1,7 +1,7 @@
 class TranslationModel {
   late String home;
   late String cart;
-  late String categories;
+  late String results;
   late String settings;
   late String logoutConfirmation;
   late String profile;
@@ -59,6 +59,20 @@ class TranslationModel {
   late String connectUs;
   late String help;
   late String logOut;
+  late String userName;
+  late String age;
+  late String doctor;
+  late String patient;
+  late String brainCancerAnalysis;
+  late String confirmImage;
+  late String mriResult;
+  late String name;
+  late String notATumor;
+  late String aTumor;
+  late String status;
+
+
+
 
 
 
@@ -67,7 +81,7 @@ class TranslationModel {
   TranslationModel.fromJson(Map<String, dynamic> json) {
     home = json['home'];
     cart = json['cart'];
-    categories = json['categories'];
+    results = json['results'];
     settings = json['settings'];
     logoutConfirmation = json['logoutConfirmation'];
     profile = json['profile'];
@@ -124,6 +138,18 @@ class TranslationModel {
     connectUs = json['connectUs'];
     help = json['help'];
     logOut = json['logOut'];
+    userName = json['userName'];
+    age = json['age'];
+    doctor = json['doctor'];
+    patient = json['patient'];
+    brainCancerAnalysis = json['brainCancerAnalysis'];
+    confirmImage = json['confirmImage'];
+    mriResult = json['mriResult'];
+    name = json['name'];
+    notATumor = json['notATumor'];
+    aTumor = json['aTumor'];
+    status = json['status'];
+
 
 
 
@@ -134,7 +160,7 @@ class TranslationModel {
   Map toJson() => {
         'home': home,
         'cart': cart,
-        'categories': categories,
+        'results': results,
         'settings': settings,
         'logoutConfirmation': logoutConfirmation,
         'profile': profile,
@@ -191,6 +217,18 @@ class TranslationModel {
         'connectUs': connectUs,
         'help': help,
         'logOut': logOut,
+        'userName': userName,
+        'age': age,
+        'doctor': doctor,
+        'patient': patient,
+        'brainCancerAnalysis': brainCancerAnalysis,
+        'confirmImage': confirmImage,
+        'mriResult': mriResult,
+        'name': name,
+        'notATumor': notATumor,
+        'aTumor': aTumor,
+        'status': status,
+
 
 
 

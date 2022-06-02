@@ -6,9 +6,8 @@ import '../../../core/util/constants.dart';
 import '../../../core/util/cubit/cubit.dart';
 import '../../../core/util/cubit/state.dart';
 import '../../../core/util/widgets/main_scaffold.dart';
-import '../../cart/presentation/pages/cart_page.dart';
-import '../../categories/presentation/pages/categories_page.dart';
 import '../../home/presentation/pages/home_page.dart';
+import '../../results/presentation/pages/results_page.dart';
 import '../../setting/presentation/pages/settings_page.dart';
 
 class MainPageScreen extends StatelessWidget {
@@ -24,8 +23,7 @@ class MainPageScreen extends StatelessWidget {
             children:
             const [
               HomePage(),
-              CategoriesPage(),
-              CartPage(),
+              ResultPage(),
               SettingsPage(),
             ],
           ),
@@ -57,19 +55,10 @@ class MainPageScreen extends StatelessWidget {
                       icon: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Icon(
-                          Icons.category_outlined,
+                          Icons.auto_graph,
                         ),
                       ),
-                      label: appTranslation(context).categories,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.shopping_cart_outlined,
-                        ),
-                      ),
-                      label: appTranslation(context).cart,
+                      label: appTranslation(context).results,
                     ),
                     BottomNavigationBarItem(
                       icon: const Padding(

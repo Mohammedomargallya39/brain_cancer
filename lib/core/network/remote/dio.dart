@@ -67,7 +67,7 @@ class DioImpl extends DioHelper {
       if (!isMultipart) 'Accept': 'application/json',
       'Accept-Language': isEnglish ? 'en' : 'ar',
       if (token != null)
-        'Authorization': '${base == null ? 'Bearer' : ''} $token'
+        'Authorization': '${base == null ? 'Token' : ''} $token'
     };
 
     if (url.contains('??')) {
@@ -121,7 +121,7 @@ class DioImpl extends DioHelper {
       if (!isMultipart) 'Accept': 'application/json',
       'Accept-Language': isEnglish ? 'en' : 'ar',
       if (token != null)
-        'Authorization': '${base == null ? 'Bearer' : ''} $token'
+        'Authorization': '${base == null ? 'Token' : ''} $token'
     };
 
     if (url.contains('??')) {
@@ -149,6 +149,8 @@ extension on DioHelper {
       final r = await request.call();
       print("Response => ${r.data}");
 
+      result = r.data;
+
       return r;
     } on DioError catch (e) {
       print("Error => ${e.response!.data['message']}");
@@ -159,5 +161,6 @@ extension on DioHelper {
     } catch (e) {
       throw Exception();
     }
+
   }
 }

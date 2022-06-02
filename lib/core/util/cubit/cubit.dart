@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:brain_cancer_detection_v1/core/models/profile_model.dart';
 import 'package:brain_cancer_detection_v1/core/models/register_model.dart';
+import 'package:brain_cancer_detection_v1/core/models/result_model.dart';
 import 'package:brain_cancer_detection_v1/core/util/cubit/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../features/register/presentaion/widgets/register_widget.dart';
 import '../../di/injection.dart';
 import '../../models/login_model.dart';
@@ -237,12 +240,40 @@ class AppCubit extends Cubit<AppState> {
             loginModel = data;
              emit(UserLoginSuccess(
                  token: loginModel!.token!,
+                 userName: loginModel!.userName!,
+                 isPatient: loginModel!.isPatient!,
              ));
-
   }
     );
 
 }
+
+  ProfileModel? profileModel;
+
+  void profile(
+  {
+  required String profileUrl,
+  }) async
+  {
+    emit(ProfileLoading());
+    final profile = await _repository.profile(
+     profileUrl: profileUrl
+    );
+
+    profile.fold(
+            (failure)
+        {
+          emit(ProfileError());
+          debugPrint(failure.toString());
+        },
+            (data)
+        {
+          profileModel = data;
+          emit(ProfileSuccess());
+        }
+    );
+
+  }
 
   RegisterModel? registerModel;
 
@@ -283,7 +314,6 @@ class AppCubit extends Cubit<AppState> {
         },
             (data)
         {
-
           registerModel = data;
           emit(RegisterSuccess(
             message: registerModel!.message!,
@@ -294,9 +324,51 @@ class AppCubit extends Cubit<AppState> {
 
   }
 
-  SingingCharacter? character = SingingCharacter.patient;
-  String? statusLink;
-  bool? patient;
+  final ImagePicker selectImagePicker = ImagePicker();
+  File? galleryProductImage;
+  void selectImage() async
+  {
+    selectImagePicker.pickImage(source: ImageSource.gallery).then((value)
+    {
+      galleryProductImage = File(value!.path);
+      emit(SelectImageState());
+    });
+  }
+
+
+  ResultModel? resultModel;
+  void uploadImage(
+  {
+  required File image,
+  }) async
+  {
+    emit(UploadImageLoading());
+    final uploadImage = await _repository.uploadImage(
+        image: image,
+        userName: userName!,
+    );
+
+    uploadImage.fold(
+            (failure)
+        {
+          emit(UploadImageError());
+          debugPrint(failure.toString());
+        },
+            (data)
+        {
+          debugPrintFullText("result => $result");
+          emit(UploadImageSuccess(
+            // result: resultModel!.theResultIs!
+          ));
+        }
+    );
+  }
+
+
+
+  SingingCharacter character = SingingCharacter.patient;
+  String statusLink = patientUrl;
+  bool patient = true;
   void changeStatus(value)
   {
     character = value;
@@ -311,6 +383,8 @@ class AppCubit extends Cubit<AppState> {
     }
     emit(ChangeStatus());
   }
+
+
 
 
 
