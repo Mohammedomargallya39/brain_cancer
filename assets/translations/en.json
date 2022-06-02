@@ -15,6 +15,7 @@
   "confirmImage": "Confirm Image",
   "mriResult": "MRI Result",
   "status": "Status",
+  "aboutUsDescription": "Brain Cancer is a program that helps you diagnose brain cancer easily.",
   "patient": "Patient",
   "doctor": "Doctor",
   "password": "Password",
@@ -68,5 +69,11 @@
   "logOut": "Log Out",
   "name": "Name",
   "notATumor": "Not A Tumor",
-  "aTumor": "A Tumor"
+  "aTumor": "A Tumor",
+  "howToUse": "How To Use",
+  "howToUseDescription": "After creating an account and logging in, you can upload a picture of the x-ray and it will appear for approximately 5 seconds, then you will go to the results screen to see the result of the x-ray.",
+  "contactUs": "Contact Us",
+  "contactUsDescription": "You can contact the software engineers working on this project if you encounter any problem.",
+  "emptyResult": "Add an image first to see the result"
+
 }

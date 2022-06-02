@@ -35,9 +35,9 @@ void main() async {
 
 
   await sl<CacheHelper>().get('isDark').then((value) {
-    debugPrint('dark mode ------------- $value');
+    debugPrint('dark mode in cubit is------------- $value');
     if (value != null) {
-      isDark = isDark;
+      isDark = value;
     }
   });
 
@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             theme: AppCubit.get(context).lightTheme,
-            // darkTheme: AppCubit.get(context).darkTheme,
+            darkTheme: AppCubit.get(context).darkTheme,
             home:
             // const SettingsPage(),
             //const LoginScreen(),

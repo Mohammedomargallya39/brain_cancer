@@ -135,7 +135,7 @@ class ResultsWidget extends StatelessWidget {
                         color: HexColor(regularGrey),
                       ),
                       Text(
-                        'Add an image first to see the result',
+                        appTranslation(context).emptyResult,
                         style: Theme.of(context).textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.w500,
                           color: HexColor(darkGreyColor),

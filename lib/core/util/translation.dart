@@ -70,6 +70,13 @@ class TranslationModel {
   late String notATumor;
   late String aTumor;
   late String status;
+  late String aboutUsDescription;
+  late String howToUse;
+  late String howToUseDescription;
+  late String contactUs;
+  late String contactUsDescription;
+  late String emptyResult;
+
 
 
 
@@ -149,6 +156,12 @@ class TranslationModel {
     notATumor = json['notATumor'];
     aTumor = json['aTumor'];
     status = json['status'];
+    aboutUsDescription = json['aboutUsDescription'];
+    howToUse = json['howToUse'];
+    contactUs = json['contactUs'];
+    howToUseDescription = json['howToUseDescription'];
+    contactUsDescription = json['contactUsDescription'];
+    emptyResult = json['emptyResult'];
 
 
 
@@ -228,6 +241,12 @@ class TranslationModel {
         'notATumor': notATumor,
         'aTumor': aTumor,
         'status': status,
+        'aboutUsDescription': aboutUsDescription,
+        'howToUse': howToUse,
+        'contactUs': contactUs,
+        'howToUseDescription': howToUseDescription,
+        'contactUsDescription': contactUsDescription,
+        'emptyResult': emptyResult,
 
 
 
