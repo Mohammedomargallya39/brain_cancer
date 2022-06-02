@@ -6,7 +6,7 @@
 // import 'package:training_app/features/home/presentation/pages/home_page.dart';
 // import '../../../core/util/constants.dart';
 // import '../../cart/presentation/pages/cart_page.dart';
-// import '../../categories/presentation/pages/categories_page.dart';
+// import '../../categories/presentation/pages/results_page.dart';
 // import '../../setting/presentation/pages/settings_page.dart';
 //
 // class MainWidget extends StatelessWidget {

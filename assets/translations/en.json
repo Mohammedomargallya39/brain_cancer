@@ -1,7 +1,7 @@
 {
   "home": "Home",
   "cart": "Cart",
-  "categories": "Categories",
+  "results": "Results",
   "settings": "Settings",
   "logoutConfirmation": "Are you sure you want to logout?",
   "profile": "Profile",
@@ -9,6 +9,14 @@
   "yes": "Yes",
   "userLogin": "User Login",
   "emailAddress": "Email Address",
+  "userName": "User Name",
+  "age": "Age",
+  "brainCancerAnalysis": "Brain Cancer Analysis",
+  "confirmImage": "Confirm Image",
+  "mriResult": "MRI Result",
+  "status": "Status",
+  "patient": "Patient",
+  "doctor": "Doctor",
   "password": "Password",
   "confirmPassword": "Confirm Password",
   "dontHaveAccount": "Don't have an account?",
@@ -55,7 +63,10 @@
   "lightMode": "Light Mode",
   "language": "Language",
   "aboutUs": "About Us",
-  "connectUs": "Connect Us",
+  "connectUs": "Contact Us",
   "help": "Help",
-  "logOut": "Log Out"
+  "logOut": "Log Out",
+  "name": "Name",
+  "notATumor": "Not A Tumor",
+  "aTumor": "A Tumor"
 }

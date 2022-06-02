@@ -37,7 +37,13 @@ class LoginWidget extends StatelessWidget {
           );
           navigateTo(context, const MainPageScreen());
           sl<CacheHelper>().put('token', state.token);
+          sl<CacheHelper>().put('userName', state.userName);
+          sl<CacheHelper>().put('isPatient', state.isPatient);
+
+
           token = state.token;
+          userName = state.userName;
+          isPatient = state.isPatient;
         }
       },
       builder: (context, state) {
@@ -69,7 +75,7 @@ class LoginWidget extends StatelessWidget {
                         ),
                         space50Vertical(context),
                         MyForm(
-                          label: appTranslation(context).emailAddress,
+                          label: appTranslation(context).userName,
                           controller: AppCubit.get(context).emailController,
                           type: TextInputType.emailAddress,
                           error: appTranslation(context).enterYourEmail,

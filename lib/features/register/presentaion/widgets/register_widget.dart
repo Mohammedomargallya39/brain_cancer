@@ -1,4 +1,5 @@
 import 'package:brain_cancer_detection_v1/features/login/presentaion/pages/login_page.dart';
+import 'package:brain_cancer_detection_v1/features/register/presentaion/widgets/radio_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,43 +110,14 @@ class RegisterWidget extends StatelessWidget {
                           ),
                           space10Vertical(context),
                           MyForm(
-                              label: "age",
+                              label: appTranslation(context).age,
                               controller: ageController,
                               type: TextInputType.phone,
                               error: '${appTranslation(context).pleaseEnter} age ${appTranslation(context).right}',
                             isPassword: false,
                           ),
                           space20Vertical(context),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: RadioListTile<SingingCharacter>(
-                                    title: const Text('Patient'),
-                                    activeColor: HexColor(mainColor),
-                                    value: SingingCharacter.patient,
-                                    groupValue: AppCubit.get(context).character,
-                                    onChanged: (SingingCharacter? value)
-                                    {
-                                      AppCubit.get(context).changeStatus(value);
-                                    }
-                                ),
-                              ),
-                              space10Horizontal(context),
-                              Expanded(
-                                child: RadioListTile<SingingCharacter>(
-                                    title: const Text('Doctor'),
-                                    activeColor: HexColor(mainColor),
-                                    value: SingingCharacter.doctor,
-                                    groupValue: AppCubit.get(context).character,
-                                    onChanged: (SingingCharacter? value)
-                                    {
-                                      AppCubit.get(context).changeStatus(value);
-                                    }
-                                ),
-                              ),
-                            ],
-                          ),
-
+                          const RadioButton(),
                           space40Vertical(context),
                           MyButton(
                             onPressed: ()
@@ -158,10 +130,10 @@ class RegisterWidget extends StatelessWidget {
                                   password: passwordController.text,
                                   confirmPassword: confirmPasswordController.text,
                                   age: int.parse(ageController.text),
-                                  isPatient: AppCubit.get(context).patient!,
+                                  isPatient: AppCubit.get(context).patient,
                                   phone: phoneController.text,
                                   userName: nameController.text,
-                                  status: AppCubit.get(context).statusLink!,
+                                  status: AppCubit.get(context).statusLink,
                                 );
                               }
                               else

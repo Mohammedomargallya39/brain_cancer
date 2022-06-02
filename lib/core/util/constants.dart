@@ -1,5 +1,6 @@
 import 'package:brain_cancer_detection_v1/core/util/translation.dart';
 import 'package:brain_cancer_detection_v1/core/util/widgets/my_button.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../../features/login/presentaion/pages/login_page.dart';
@@ -10,6 +11,8 @@ import 'cubit/cubit.dart';
 int selectedService = 0;
 int selectedCategory = 0;
 bool isEnglish = true;
+
+Map<String,dynamic>? result;
 
 const String serverFailureMessage = 'Server Failure';
 const String cacheFailureMessage = 'Cache Failure';

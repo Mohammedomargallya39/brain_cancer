@@ -1,6 +1,8 @@
 
 import 'package:brain_cancer_detection_v1/core/util/widgets/two_options_dialog.dart';
+import 'package:brain_cancer_detection_v1/features/setting/presentation/pages/profile_page.dart';
 import 'package:brain_cancer_detection_v1/features/setting/presentation/widgets/setting_item.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,44 +32,48 @@ class SettingsWidget extends StatelessWidget {
               [
                 Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 35,
-                        backgroundColor: HexColor(regularGrey),
-                        child: const CircleAvatar(
-                          radius: 33,
-                          backgroundColor: whiteColor,
-                          child: AppLogo(),
+                  child: ConditionalBuilder(
+                    condition: AppCubit.get(context).profileModel != null ,
+                    builder: (context) => Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 35,
+                          backgroundColor: HexColor(regularGrey),
+                          child: const CircleAvatar(
+                            radius: 33,
+                            backgroundColor: whiteColor,
+                            child: AppLogo(),
+                          ),
                         ),
-                      ),
-                      space10Horizontal(context),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Account',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                                fontWeight: FontWeight.w700
-                            ),
-                            ),
-                            space3Vertical(context),
-                            Text(
-                              'Account@test.com',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.caption!.copyWith(
-                                  fontWeight: FontWeight.w700
+                        space10Horizontal(context),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppCubit.get(context).profileModel!.username!,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                    fontWeight: FontWeight.w700
+                                ),
                               ),
-                            ),
-                          ],
+                              space3Vertical(context),
+                              Text(
+                                AppCubit.get(context).profileModel!.email!,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.caption!.copyWith(
+                                    fontWeight: FontWeight.w700
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                    fallback: (context) => const Center(child: CircularProgressIndicator()),
                   ),
                 ),
                 bigDivider(context),
@@ -86,6 +92,14 @@ class SettingsWidget extends StatelessWidget {
                         ),
                       ),
                       space3Vertical(context),
+                      SettingsItem(
+                        title: appTranslation(context).profile,
+                        icon: Icons.person,
+                        function: ()
+                        {
+                          navigateTo(context, const ProfilePage());
+                        },
+                      ),
                       SettingsItem(
                           title: appTranslation(context).mode,
                           icon: Icons.brightness_2_outlined,

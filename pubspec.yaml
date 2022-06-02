@@ -56,6 +56,9 @@ dependencies:
   fluttertoast: ^8.0.8
   flutter_conditional_rendering: ^2.0.0
   flutter_icons: ^1.1.0
+  image_picker: ^0.8.5+3
+  conditional_builder_null_safety: ^0.0.6
+
 
 dev_dependencies:
   flutter_test:
