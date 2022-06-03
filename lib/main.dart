@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ import 'core/util/cubit/cubit.dart';
 import 'core/util/cubit/state.dart';
 import 'features/login/presentaion/pages/login_page.dart';
 import 'features/main/pages/main_page.dart';
+import 'features/no connection/presentation/pages/no_connection.dart';
 import 'features/setting/presentation/pages/settings_page.dart';
 
 void main() async {
@@ -56,9 +58,30 @@ void main() async {
   debugPrintFullText('My User Name => $userName');
   debugPrintFullText('Is Patient => $isPatient');
 
-  Widget? widget;
-  widget = token != null ? const MainPageScreen() :const LoginScreen();
 
+  Widget? widget;
+  if (token != null) {
+    widget = const MainPageScreen();
+  } else {
+    widget = const LoginScreen();
+  }
+
+
+
+  // if no internet show toast that no internet
+  // if (await sl<CacheHelper>().isConnected()) {
+  //   widget = token != null ? const MainPageScreen() :const LoginScreen();
+  // } else {
+  //   widget = const NoInternetScreen();
+  // }
+
+  // if(await sl<CacheHelper>().isConnected())
+  // {
+  //   widget = token != null ? const MainPageScreen() :const LoginScreen();
+  // } else {
+  //   widget = const NoInternetScreen();
+  // }
+  //
 
   runApp(MyApp(
     userName: userName ?? '',
@@ -111,6 +134,18 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
+
+          DataConnectionChecker().onStatusChange.listen((status)
+          {
+            if (status == DataConnectionStatus.disconnected) {
+              debugPrint('No internet connection');
+            } else {
+              debugPrint('Internet connection is available');
+            }
+            isConnection = status;
+            debugPrint('data Connection ${isConnection.toString()}');
+          });
+
           return MaterialApp(
             title: 'Brain Cancer',
             debugShowCheckedModeBanner: false,
@@ -131,7 +166,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                nextScreen: startWidget,
+                nextScreen: isConnection == DataConnectionStatus.disconnected? const NoConnectionPage() : startWidget,
                 duration: 1000,
                 //splashTransition: SplashTransition.scaleTransition,
                 backgroundColor: whiteColor,
