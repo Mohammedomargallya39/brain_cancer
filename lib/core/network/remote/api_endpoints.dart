@@ -1,4 +1,4 @@
-const String baseUrl = 'http://3a98-156-210-34-115.ngrok.io/';
+const String baseUrl = 'http://ed6e-156-210-34-115.ngrok.io/';
 
 String? token;
 

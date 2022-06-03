@@ -59,6 +59,7 @@ dependencies:
   image_picker: ^0.8.5+3
   conditional_builder_null_safety: ^0.0.6
   url_launcher: ^6.0.0
+  animated_splash_screen: ^1.2.0
 
 
 
