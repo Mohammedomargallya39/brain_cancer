@@ -76,6 +76,12 @@ class TranslationModel {
   late String contactUs;
   late String contactUsDescription;
   late String emptyResult;
+  late String khattaby;
+  late String khalid;
+  late String shahin;
+  late String zaky;
+  late String yousef;
+
 
 
 
@@ -162,6 +168,11 @@ class TranslationModel {
     howToUseDescription = json['howToUseDescription'];
     contactUsDescription = json['contactUsDescription'];
     emptyResult = json['emptyResult'];
+    khattaby = json['khattaby'];
+    khalid = json['khalid'];
+    shahin = json['shahin'];
+    zaky = json['zaky'];
+    yousef = json['yousef'];
 
 
 
@@ -247,6 +258,11 @@ class TranslationModel {
         'howToUseDescription': howToUseDescription,
         'contactUsDescription': contactUsDescription,
         'emptyResult': emptyResult,
+        'khattaby': khattaby,
+        'khalid': khalid,
+        'shahin': shahin,
+        'zaky': zaky,
+        'yousef': yousef,
 
 
 

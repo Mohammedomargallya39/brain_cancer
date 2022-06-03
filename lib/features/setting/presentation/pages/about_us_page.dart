@@ -89,11 +89,11 @@ class AboutUsPage extends StatelessWidget {
                   ),
                   space40Vertical(context),
                   DefaultTextButton(
-                      text: 'Mohammed Ahmed',
+                      text: appTranslation(context).khattaby,
                       fontFamily: 'Roboto',
                       onPressed: () async
                       {
-                        await launchUrlString('mailto:mohammed.gallya39@gmail.com');
+                        await launchUrlString('mailto:mokhattaby38@gmail.com');
                       },
                       textColor: HexColor(mainColor),
                       fontSize: responsiveValue(context, 16),
@@ -102,11 +102,11 @@ class AboutUsPage extends StatelessWidget {
                   myDivider(context),
                   space10Vertical(context),
                   DefaultTextButton(
-                    text: 'Abdulrahman Zaky',
+                    text: appTranslation(context).zaky,
                     fontFamily: 'Roboto',
                     onPressed: () async
                     {
-                      await launchUrlString('mailto:mohammed.gallya39@gmail.com');
+                      await launchUrlString('mailto:bodyzaky30@gmail.com');
                     },
                     textColor: HexColor(mainColor),
                     fontSize: responsiveValue(context, 16),
@@ -115,11 +115,11 @@ class AboutUsPage extends StatelessWidget {
                   myDivider(context),
                   space10Vertical(context),
                   DefaultTextButton(
-                    text: 'Ahmed Abd El-naby',
+                    text: appTranslation(context).shahin,
                     fontFamily: 'Roboto',
                     onPressed: () async
                     {
-                      await launchUrlString('mailto:mohammed.gallya39@gmail.com');
+                      await launchUrlString('mailto:ahmed11.shahin2000@gmail.com');
                     },
                     textColor: HexColor(mainColor),
                     fontSize: responsiveValue(context, 16),
@@ -128,11 +128,11 @@ class AboutUsPage extends StatelessWidget {
                   myDivider(context),
                   space10Vertical(context),
                   DefaultTextButton(
-                    text: 'Khaled Ashraf',
+                    text: appTranslation(context).khalid,
                     fontFamily: 'Roboto',
                     onPressed: () async
                     {
-                      await launchUrlString('mailto:mohammed.gallya39@gmail.com');
+                      await launchUrlString('mailto:khalidashraf380@gmail.com');
                     },
                     textColor: HexColor(mainColor),
                     fontSize: responsiveValue(context, 16),
@@ -141,11 +141,11 @@ class AboutUsPage extends StatelessWidget {
                   myDivider(context),
                   space10Vertical(context),
                   DefaultTextButton(
-                    text: 'Youssef',
+                    text: appTranslation(context).yousef,
                     fontFamily: 'Roboto',
                     onPressed: () async
                     {
-                      await launchUrlString('mailto:mohammed.gallya39@gmail.com');
+                      await launchUrlString('mailto:yousofmahmoud99@gmail.com');
                     },
                     textColor: HexColor(mainColor),
                     fontSize: responsiveValue(context, 16),

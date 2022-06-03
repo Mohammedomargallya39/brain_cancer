@@ -14,7 +14,7 @@ class AppLogo extends StatelessWidget {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return Image.asset(
-          'assets/images/BrainCancerLogo.png',
+          'assets/images/logo.png',
           width: pxToDp(350.0),
           height: pxToDp(350.0),
           // color: AppCubit

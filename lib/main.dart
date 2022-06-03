@@ -1,6 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'core/di/injection.dart' as di;
 import 'core/di/injection.dart';
 import 'core/network/local/cache_helper.dart';
@@ -54,6 +56,8 @@ void main() async {
   debugPrintFullText('My User Name => $userName');
   debugPrintFullText('Is Patient => $isPatient');
 
+  Widget? widget;
+  widget = token != null ? const MainPageScreen() :const LoginScreen();
 
 
   runApp(MyApp(
@@ -63,6 +67,7 @@ void main() async {
     isRtl: isRtl,
     isDark: isDark,
     translation: translation,
+    startWidget: widget,
   ));
 }
 
@@ -73,6 +78,7 @@ class MyApp extends StatelessWidget {
   final String translation;
   final String userName;
   final bool isPatient;
+  final Widget startWidget;
 
 
   MyApp({
@@ -83,6 +89,7 @@ class MyApp extends StatelessWidget {
     required this.translation,
     required this.userName,
     required this.isPatient,
+    required this.startWidget,
 
   }) : super(key: key);
 
@@ -112,11 +119,25 @@ class MyApp extends StatelessWidget {
                 : ThemeMode.light,
             theme: AppCubit.get(context).lightTheme,
             darkTheme: AppCubit.get(context).darkTheme,
-            home:
-            // const SettingsPage(),
-            //const LoginScreen(),
-            //const MainPageScreen(),
-            token != null ? const MainPageScreen() :const LoginScreen() ,
+            home:  AnimatedSplashScreen(
+              splashIconSize: 200,
+                splash: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/logo.png',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                nextScreen: startWidget,
+                duration: 1000,
+                //splashTransition: SplashTransition.scaleTransition,
+                backgroundColor: whiteColor,
+                curve: Curves.bounceOut,
+
+            ),
           );
         },
       ),

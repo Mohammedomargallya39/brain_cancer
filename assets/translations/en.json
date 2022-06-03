@@ -74,6 +74,11 @@
   "howToUseDescription": "After creating an account and logging in, you can upload a picture of the x-ray and it will appear for approximately 5 seconds, then you will go to the results screen to see the result of the x-ray.",
   "contactUs": "Contact Us",
   "contactUsDescription": "You can contact the software engineers working on this project if you encounter any problem.",
-  "emptyResult": "Add an image first to see the result"
+  "emptyResult": "Add an image first to see the result",
+  "khattaby": "Mohamed Ahmed",
+  "khalid": "Khaled Ashraf",
+  "shahin": "Ahmed Abd-Elnaby",
+  "zaky": "Abd-Elrahman Zaky",
+  "yousef": "Youssef Reda"
 
 }
