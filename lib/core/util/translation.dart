@@ -81,6 +81,7 @@ class TranslationModel {
   late String shahin;
   late String zaky;
   late String yousef;
+  late String checkInternet;
 
 
 
@@ -173,6 +174,7 @@ class TranslationModel {
     shahin = json['shahin'];
     zaky = json['zaky'];
     yousef = json['yousef'];
+    checkInternet = json['checkInternet'];
 
 
 
@@ -263,6 +265,7 @@ class TranslationModel {
         'shahin': shahin,
         'zaky': zaky,
         'yousef': yousef,
+        'checkInternet': checkInternet,
 
 
 
